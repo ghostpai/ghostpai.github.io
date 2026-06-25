@@ -1,3 +1,1 @@
 # ghostpai.github.io
-
-(README)
