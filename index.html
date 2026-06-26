@@ -225,6 +225,12 @@
     /* ----------------------------------------------------------------
        BUTTONS
        ---------------------------------------------------------------- */
+
+    .demo_btn {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 4px 14px rgba(229, 52, 43, 0.4);
+    }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -672,7 +678,7 @@
         <h1>Solving robotics dexterity in the wild</h1>
         <div class="hero-actions">
           <a class="btn" href="#roadmap">Explore the work</a>
-          <a class="btn" href="https://youtube.com/shorts/BUelR3mRy-U?is=jIb4VjKl5zdBBgKM" target="_blank" rel="noopener">See our demo</a>
+          <a class="btn demo_btn" href="https://youtube.com/shorts/BUelR3mRy-U?is=jIb4VjKl5zdBBgKM" target="_blank" rel="noopener">See our demo</a>
         </div>
       </div>
     </div>
@@ -1041,13 +1047,6 @@
       flex: none;
     }
   </style>
-
-  <a href="https://www.youtube.com/shorts/BUelR3mRy-U" id="demoBtn" target="_blank" rel="noopener" class="btn btn-floating">
-    <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-    </svg>
-    Watch the Demo
-  </a>
 
   <script>
     // Self-contained script to handle the disappearing animation
