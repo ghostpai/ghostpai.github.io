@@ -308,6 +308,36 @@
       margin-top: clamp(28px, 4vh, 40px);
     }
 
+    /* Announcement bar (sits inside the hero, just under the fixed header) */
+    .announce {
+      position: absolute;
+      top: 84px; left: 0;
+      width: 100%;
+      z-index: 2;
+      height: 44px;
+      padding: 0 var(--pad-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: rgba(10,10,10,.72);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      text-decoration: none;
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color .25s ease;
+    }
+    .announce:hover { color: var(--accent); }
+    .announce-text { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .announce-sq { width: 8px; height: 8px; background: var(--accent); flex: none; }
+    .announce-cta { flex: none; white-space: nowrap; }
+
     /* ----------------------------------------------------------------
        MISSION BANDS
        ---------------------------------------------------------------- */
@@ -485,6 +515,10 @@
     }
     .row.open .row-mark { /* swap + for – via content below */ }
 
+    /* featured row (EMMIBS) reads heavier than the rest */
+    .row-featured { border-top: 2px solid var(--accent); }
+    .badge-new { color: var(--accent); }
+
     /* smooth height animation using the grid-rows trick */
     .row-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
     .row.open .row-body { grid-template-rows: 1fr; }
@@ -534,6 +568,94 @@
     }
 
     /* ----------------------------------------------------------------
+       PARTNERS & VENUES
+       ---------------------------------------------------------------- */
+    .partners {
+      padding: clamp(56px, 9vh, 96px) var(--pad-x);
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+    .partners-inner { max-width: 1240px; margin: 0 auto; }
+    .partner-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .partner {
+      display: block;
+      background: var(--bg);
+      padding: 28px 24px;
+      color: inherit;
+      text-decoration: none;
+      transition: background .25s ease;
+    }
+    a.partner:hover { background: #111111; }
+    .partner-title {
+      margin-top: 12px;
+      font-family: var(--font-display);
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 1rem;
+      line-height: 1.35;
+      color: var(--white);
+    }
+    .partner-line {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    /* ----------------------------------------------------------------
+       FUNDING  (full-width red field)
+       ---------------------------------------------------------------- */
+    .fund {
+      background: var(--accent);
+      color: var(--white);
+      padding: clamp(72px, 12vh, 140px) var(--pad-x);
+    }
+    .fund-inner { max-width: 1240px; margin: 0 auto; }
+    .fund-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.24em;
+      color: rgba(255,255,255,.75);
+    }
+    .fund-statement {
+      margin-top: 24px;
+      font-family: var(--font-display);
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      line-height: 1.15;
+      font-size: clamp(1.7rem, 4.2vw, 3.4rem);
+      max-width: 1000px;
+      text-wrap: balance;
+    }
+    .fund-body {
+      margin-top: 28px;
+      max-width: 640px;
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: 1.62;
+      text-wrap: pretty;
+    }
+    .fund-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+    .fund .btn:hover { background: var(--white); color: var(--accent); border-color: var(--white); }
+    .fund .btn-solid { background: var(--white); color: var(--accent); border-color: var(--white); }
+    .fund .btn-solid:hover { background: transparent; color: var(--white); }
+    .fund-note {
+      margin-top: 28px;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,.75);
+    }
+
+    /* ----------------------------------------------------------------
        PEOPLE / JOIN
        ---------------------------------------------------------------- */
     .people {
@@ -561,6 +683,8 @@
       color: var(--muted);
     }
     .people-col .btn-quiet { margin-top: 40px; }
+    .people-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+    .people-actions .btn-quiet { margin-top: 0; }
 
     /* ----------------------------------------------------------------
        FOOTER
@@ -624,6 +748,10 @@
     @media (max-width: 820px) {
       .nav { display: none; }
       .burger { display: flex; }
+      .announce { height: auto; padding: 10px var(--pad-x); line-height: 1.6; }
+      .announce-text { align-items: flex-start; }
+      .announce-sq { margin-top: 0.4em; }
+      .announce-cta { display: none; }
     }
 
     /* Respect users who prefer less motion */
@@ -648,7 +776,9 @@
 
     <nav class="nav">
       <a href="#roadmap">Research</a>
+      <a href="emmibs/">EMMIBS</a>
       <a href="#people">People</a>
+      <a href="#funding">Support</a>
       <a href="#join">Join&nbsp;Us</a>
     </nav>
 
@@ -665,7 +795,9 @@
     </div>
     <nav class="menu-links">
       <a href="#roadmap">Research</a>
+      <a href="emmibs/">EMMIBS</a>
       <a href="#people">People</a>
+      <a href="#funding">Support</a>
       <a href="#join">Join Us</a>
     </nav>
   </div>
@@ -674,12 +806,17 @@
   <section class="hero">
     <img src="images/robot.jpg" alt="GHOST's riverside cleanup robot extends its black manipulator arm toward a crumpled piece of litter on a hard floor, in a wide empty hall.">
     <div class="hero-shade" aria-hidden="true"></div>
+    <a class="announce" href="emmibs/">
+      <span class="announce-text"><span class="announce-sq" aria-hidden="true"></span><span>NEW · EMMIBS — EVERY MOTION METRIC IS BLIND TO SOMETHING · SUBMITTED TO IEEE ICRA 2027</span></span>
+      <span class="announce-cta">READ THE PAGE →</span>
+    </a>
     <div class="hero-content">
       <div class="hero-inner">
         <h1>Solving robotics dexterity in the wild</h1>
         <div class="hero-actions">
           <a class="btn" href="#roadmap">Explore the work</a>
           <a class="btn demo_btn" href="https://youtube.com/shorts/BUelR3mRy-U?is=jIb4VjKl5zdBBgKM" target="_blank" rel="noopener">See our demo</a>
+          <a class="btn" href="emmibs/">Read EMMIBS</a>
         </div>
       </div>
     </div>
@@ -742,9 +879,9 @@
     <div class="roadmap-inner">
 
       <div class="roadmap-intro reveal">
-        <span class="eyebrow">GHOST · ROADMAP</span>
+        <span class="eyebrow">GHOST · RESEARCH &amp; ROADMAP</span>
         <h2>Drobage</h2>
-        <p>Drobage is a riverside cleanup robot built to do what no system does reliably yet: pick up real garbage in the wild. We treat it as a proving ground for robotics' hardest open problem: dependable manipulation in unstructured environments, testing, breaking, and advancing state-of-the-art methods along the way. Everything below is split into the research we may publish and the deployment we work on. The line isn't strict, some of the research involves real implementation that could just as easily count as deployment, but keeping the two loosely separated helps.</p>
+        <p>Drobage is a riverside cleanup robot built to do what no system does reliably yet: pick up real garbage in the wild. We treat it as a proving ground for robotics' hardest open problem: dependable manipulation in unstructured environments, testing, breaking, and advancing state-of-the-art methods along the way. Everything below is split into the research we may publish and the deployment we work on. The line isn't strict, some of the research involves real implementation that could just as easily count as deployment, but keeping the two loosely separated helps. Alongside Drobage, we now run a second track on the arms themselves: EMMIBS, a score that reads a manipulation policy's commands before the robot executes them.</p>
       </div>
 
       <div class="columns">
@@ -781,19 +918,26 @@
           </div>
 
           <!-- R2 -->
-          <div class="row">
-            <button class="row-toggle" aria-expanded="false" aria-controls="b-R2">
+          <div class="row row-featured open">
+            <button class="row-toggle" aria-expanded="true" aria-controls="b-R2">
               <span class="row-id">R2</span>
-              <span class="row-title">Data Paper</span>
+              <span class="row-title">EMMIBS · Every Motion Metric Is Blind to Something</span>
               <span class="row-status">
                 <span class="badge-active"><span class="dot"></span>ACTIVE</span>
-                <span class="row-mark" aria-hidden="true">+</span>
+                <span class="badge badge-new">NEW</span>
+                <span class="row-mark" aria-hidden="true">–</span>
               </span>
             </button>
             <div class="row-body" id="b-R2">
               <div class="row-body-inner">
                 <div class="pad">
-                  <p>A dataset of trash in the wild. We combine simulation, scraped web imagery, and our own field collection. The pipeline collects raw data, labels it with <a class="link" href="https://ai.meta.com/blog/segment-anything-model-3/" target="_blank" rel="noopener">SAM3</a>, and distills the result into a compact detector, <a class="link" href="https://docs.ultralytics.com/models/yolov8/" target="_blank" rel="noopener">YOLOv8s</a> or an alternative, light enough to run on the robot. A parallel deployment thread explores data augmentation techniques, possibly in 3D.</p>
+                  <div class="rel"><span class="glyph">●</span><span>SECOND TRACK · SUBMITTED TO IEEE ICRA 2027</span></div>
+                  <p>Execution-free scoring of commanded trajectories for manipulation policies. Φ reads the action chunk a VLA policy emits, turns it into five hardware-referenced terms, and reports how far the chunk sits from human motion, in standard deviations, with the term responsible. Training-free, 1.55 ms per chunk, before the servos move. On two arms, the SO-101 and the RoArm-M3 Pro, every single metric we tested was blind to at least one injected defect; Φ was blind to none.</p>
+                  <div class="icra">
+                    <img src="images/icra.png" alt="IEEE ICRA" loading="lazy">
+                    <span>Submitted to <a class="link" href="https://2027.ieee-icra.org/" target="_blank" rel="noopener">ICRA 2027</a> · <a class="link" href="emmibs/">read the research page</a> · <a class="link" href="emmibs/#demo">live rollouts</a></span>
+                  </div>
+                  <span class="row-note">Data: <a class="link" href="https://huggingface.co/datasets/polrolnik2/so101_candy" target="_blank" rel="noopener">so101_candy</a>, <a class="link" href="https://huggingface.co/datasets/rtrtwrw/roarm_m3_candy_pick_place" target="_blank" rel="noopener">roarm_m3_candy_pick_place</a> · Models: <a class="link" href="https://huggingface.co/polrolnik2/pi05_roarm_m3_candy_pick_place" target="_blank" rel="noopener">pi05_roarm_m3</a>, <a class="link" href="https://huggingface.co/polrolnik2/smolvla_roarm_m3_candy_pick_place" target="_blank" rel="noopener">smolvla_roarm_m3</a></span>
                 </div>
               </div>
             </div>
@@ -803,7 +947,7 @@
           <div class="row">
             <button class="row-toggle" aria-expanded="false" aria-controls="b-R3">
               <span class="row-id">R3</span>
-              <span class="row-title">PVD · Physics-Verified Decoder</span>
+              <span class="row-title">Data Paper</span>
               <span class="row-status">
                 <span class="badge-active"><span class="dot"></span>ACTIVE</span>
                 <span class="row-mark" aria-hidden="true">+</span>
@@ -812,7 +956,27 @@
             <div class="row-body" id="b-R3">
               <div class="row-body-inner">
                 <div class="pad">
-                  <p>A decoding head built on top of <a class="link" href="https://huggingface.co/blog/smolvla" target="_blank" rel="noopener">diffusion-based VLAs</a>. It samples several candidate trajectories and checks the physical feasibility of each predicted action chunk before the robot commits to one. We're trying it out on cheap hardware rather than expensive research rigs. The aim is to go deeper into VLAs, with a real shot at advancing the state of the art, and a possible delta utility for the project's own development. May grow into its own paper rather than a section of the robot paper.<span class="row-note">Note: PVD is the most exploratory, standalone track here. It's about advancing the method itself, and isn't meant to run on the robot in the wild (at least, we don't see it there yet).</span></p>
+                  <p>A dataset of trash in the wild. We combine simulation, scraped web imagery, and our own field collection. The pipeline collects raw data, labels it with <a class="link" href="https://ai.meta.com/blog/segment-anything-model-3/" target="_blank" rel="noopener">SAM3</a>, and distills the result into a compact detector, <a class="link" href="https://docs.ultralytics.com/models/yolov8/" target="_blank" rel="noopener">YOLOv8s</a> or an alternative, light enough to run on the robot. A parallel deployment thread explores data augmentation techniques, possibly in 3D.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- R4 -->
+          <div class="row">
+            <button class="row-toggle" aria-expanded="false" aria-controls="b-R4">
+              <span class="row-id">R4</span>
+              <span class="row-title">PVD · Physics-Verified Decoder</span>
+              <span class="row-status">
+                <span class="badge">PLANNED</span>
+                <span class="row-mark" aria-hidden="true">+</span>
+              </span>
+            </button>
+            <div class="row-body" id="b-R4">
+              <div class="row-body-inner">
+                <div class="pad">
+                  <div class="rel"><span class="glyph">↗</span><span>BUILDS ON R2 · EMMIBS</span></div>
+                  <p>A decoding head for <a class="link" href="https://huggingface.co/blog/smolvla" target="_blank" rel="noopener">diffusion VLAs</a> that samples several candidate action chunks and lets Φ reject or resample a chunk before the robot commits to it. EMMIBS is the scorer; PVD is where it becomes a gate.</p>
                 </div>
               </div>
             </div>
@@ -929,17 +1093,58 @@
     </div>
   </section>
 
+  <!-- ====================== PARTNERS & VENUES ====================== -->
+  <section class="partners" id="partners">
+    <div class="partners-inner">
+      <span class="eyebrow">GHOST · PARTNERS &amp; VENUES</span>
+      <div class="partner-grid">
+        <a class="partner" href="https://www.alienbazaar.com/" target="_blank" rel="noopener">
+          <span class="eyebrow">PARTNER</span>
+          <h3 class="partner-title">AlienBazaar Hackathon · Warsaw</h3>
+          <p class="partner-line">GHOST is a partner of the hackathon.</p>
+        </a>
+        <div class="partner">
+          <span class="eyebrow">VENUE</span>
+          <h3 class="partner-title">IEEE ICRA</h3>
+          <p class="partner-line">2026 Vienna: presentation · 2027: EMMIBS submitted</p>
+        </div>
+        <div class="partner">
+          <span class="eyebrow">HARDWARE</span>
+          <h3 class="partner-title"><a class="link" href="https://huggingface.co/docs/lerobot/so101" target="_blank" rel="noopener">SO-101</a> · <a class="link" href="https://www.waveshare.com/wiki/RoArm-M3" target="_blank" rel="noopener">RoArm-M3 Pro</a> · <a class="link" href="https://fictionlab.pl/leo-rover/" target="_blank" rel="noopener">Leo Rover</a></h3>
+          <p class="partner-line">The arms EMMIBS is scored on and the base Drobage runs on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== FUNDING ====================== -->
+  <section class="fund" id="funding">
+    <div class="fund-inner">
+      <span class="fund-eyebrow">HELP KEEP THE SERVOS SPINNING</span>
+      <p class="fund-statement reveal">We do robotics research on a student budget. Servos aren't free.</p>
+      <p class="fund-body">We're two researchers from Warsaw with a field robot, one ICRA presentation and a second paper in review. No startup, no round, no pitch deck. We just need a hand with arms, GPUs and the odd conference trip. If you can chip in, sponsor something, or have hardware lying around, say hi.</p>
+      <div class="fund-actions">
+        <a class="btn btn-solid" href="mailto:viacheslav.krilyshyn@gmail.com?subject=GHOST%20research%20support">Say hi</a>
+        <a class="btn" href="emmibs/">Read EMMIBS</a>
+      </div>
+      <p class="fund-note">SEEN THIS ON A POSTER? THE PAGE IS GHOSTPAI.GITHUB.IO/EMMIBS</p>
+    </div>
+  </section>
+
   <!-- ====================== PEOPLE / JOIN ====================== -->
   <section class="people">
     <div class="people-col" id="people">
       <h2>People</h2>
-      <p>A small group of roboticists, ML researchers, field engineers and students, testing novel research ideas in the wild, evaluating what worked and what didn't.</p>
+      <p>Two founders, plus roboticists, ML researchers, field engineers and students who test research ideas in the wild and report what worked and what didn't.</p>
       <a class="btn btn-quiet" href="#roadmap">Read the research</a>
     </div>
     <div class="people-col" id="join">
       <h2>Join Us</h2>
       <p>Want to push intelligent robotics with us? Whether you're a student, an engineer, or simply someone interested in the field, get in touch, even if you're not sure of your capabilities.</p>
-      <a class="btn btn-quiet accent" href="mailto:viacheslav.krilyshyn@gmail.com">Get in touch</a>
+      <div class="people-actions">
+        <a class="btn btn-quiet accent" href="mailto:viacheslav.krilyshyn@gmail.com">Get in touch</a>
+        <a class="btn btn-quiet" href="mailto:viacheslav.krilyshyn@gmail.com?subject=GHOST%20research%20support">Help us out</a>
+      </div>
     </div>
   </section>
 
@@ -947,7 +1152,9 @@
   <footer class="footer">
     <div class="footer-nav">
       <a href="#roadmap">Research</a>
+      <a href="emmibs/">EMMIBS</a>
       <a href="#people">People</a>
+      <a href="#funding">Support</a>
       <a href="#join">Join Us</a>
     </div>
     <div class="footer-meta">
@@ -978,7 +1185,7 @@
       const row  = btn.closest('.row');
       const body = document.getElementById(btn.getAttribute('aria-controls'));
       const mark = btn.querySelector('.row-mark');
-      body.querySelector('.row-body-inner').inert = true;   // keep links out of tab order while closed
+      body.querySelector('.row-body-inner').inert = !row.classList.contains('open');   // keep links out of tab order while closed
       btn.addEventListener('click', () => {
         const open = row.classList.toggle('open');
         btn.setAttribute('aria-expanded', open);
