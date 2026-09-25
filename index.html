@@ -518,6 +518,7 @@
     /* featured row (EMMIBS) reads heavier than the rest */
     .row-featured { border-top: 2px solid var(--accent); }
     .badge-new { color: var(--accent); }
+    .badge-done { color: var(--white); }
 
     /* smooth height animation using the grid-rows trick */
     .row-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
@@ -923,7 +924,7 @@
               <span class="row-id">R2</span>
               <span class="row-title">EMMIBS · Every Motion Metric Is Blind to Something</span>
               <span class="row-status">
-                <span class="badge-active"><span class="dot"></span>ACTIVE</span>
+                <span class="badge badge-done">DONE</span>
                 <span class="badge badge-new">NEW</span>
                 <span class="row-mark" aria-hidden="true">–</span>
               </span>
@@ -957,26 +958,6 @@
               <div class="row-body-inner">
                 <div class="pad">
                   <p>A dataset of trash in the wild. We combine simulation, scraped web imagery, and our own field collection. The pipeline collects raw data, labels it with <a class="link" href="https://ai.meta.com/blog/segment-anything-model-3/" target="_blank" rel="noopener">SAM3</a>, and distills the result into a compact detector, <a class="link" href="https://docs.ultralytics.com/models/yolov8/" target="_blank" rel="noopener">YOLOv8s</a> or an alternative, light enough to run on the robot. A parallel deployment thread explores data augmentation techniques, possibly in 3D.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- R4 -->
-          <div class="row">
-            <button class="row-toggle" aria-expanded="false" aria-controls="b-R4">
-              <span class="row-id">R4</span>
-              <span class="row-title">PVD · Physics-Verified Decoder</span>
-              <span class="row-status">
-                <span class="badge">PLANNED</span>
-                <span class="row-mark" aria-hidden="true">+</span>
-              </span>
-            </button>
-            <div class="row-body" id="b-R4">
-              <div class="row-body-inner">
-                <div class="pad">
-                  <div class="rel"><span class="glyph">↗</span><span>BUILDS ON R2 · EMMIBS</span></div>
-                  <p>A decoding head for <a class="link" href="https://huggingface.co/blog/smolvla" target="_blank" rel="noopener">diffusion VLAs</a> that samples several candidate action chunks and lets Φ reject or resample a chunk before the robot commits to it. EMMIBS is the scorer; PVD is where it becomes a gate.</p>
                 </div>
               </div>
             </div>
